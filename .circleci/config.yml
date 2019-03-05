@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  release:
+    docker:
+      - image: docker:stable-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: |
+            docker build -t p3lim/bitwarden:latest -t p3lim/bitwarden:$CIRCLE_TAG .
+      - run:
+          name: Push image to Docker Hub
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push p3lim/bitwarden:$CIRCLE_TAG
+            docker push p3lim/bitwarden:latest
+workflows:
+  version: 2
+  release:
+    jobs:
+      - release:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
