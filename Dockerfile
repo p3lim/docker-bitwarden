@@ -1,7 +1,7 @@
 FROM clux/muslrust:stable AS build
 
 ENV VERSION 1.7.0
-ENV VERSION_VAULT v2.8.0d
+ENV VERSION_VAULT v2.9.0
 
 # clone source and checkout version
 RUN git clone https://github.com/dani-garcia/bitwarden_rs /app --branch=$VERSION
