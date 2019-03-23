@@ -1,6 +1,6 @@
 FROM clux/muslrust:stable AS build
 
-ENV VERSION 1.7.0
+ENV VERSION 1.8.0
 ENV VERSION_VAULT v2.9.0
 
 # clone source and checkout version
