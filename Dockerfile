@@ -1,7 +1,6 @@
 FROM clux/muslrust:stable AS build
 
 ENV VERSION 1.8.0
-ENV VERSION_VAULT v2.9.0
 
 # clone source and checkout version
 RUN git clone https://github.com/dani-garcia/bitwarden_rs /app --branch=$VERSION
@@ -33,7 +32,7 @@ COPY --from=build /app/target/x86_64-unknown-linux-musl/release/bitwarden_rs .
 
 # copy vault from pre-built archive
 # TODO: build ourselves
-ENV VERSION_VAULT v2.8.0d
+ENV VERSION_VAULT v2.10.0
 ENV WEB_VAULT_FOLDER /web-vault
 RUN mkdir /web-vault
 RUN curl -L "https://github.com/dani-garcia/bw_web_builds/releases/download/${VERSION_VAULT}/bw_web_${VERSION_VAULT}.tar.gz" | tar xz -C /web-vault
