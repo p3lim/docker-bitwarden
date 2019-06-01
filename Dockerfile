@@ -1,6 +1,6 @@
 FROM clux/muslrust:stable AS build
 
-ENV VERSION 1.8.0
+ENV VERSION 1.9.1
 
 # clone source and checkout version
 RUN git clone https://github.com/dani-garcia/bitwarden_rs /app --branch=$VERSION
